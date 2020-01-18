@@ -1,4 +1,11 @@
 <h1><%= @user.name %>のページ</h1>
 <p class="center">名前: <%= @user.name %></p>
 <p class="center">メールアドレス: <%= @user.email %></p>
-<p> <%= link_to "編集する", edit_user_path(@user.id) %></p>
+<p>プロファイル画像
+  <%= image_tag(@user.profile_photo.url) if @user.profile_photo && @user.profile_photo.url %>
+</p>
+<br>
+
+<% if logged_in? && current_user.id == @user.id %>
+  <p> <%= link_to "編集する", edit_user_path(@user.id) %></p>
+<% end %>

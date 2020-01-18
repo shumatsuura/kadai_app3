@@ -1,4 +1,4 @@
-<h1>Sign up</h1>
+<h1>Profile Edit</h1>
 
 <% if @user.errors.any? %>
   <div id="error_explanation">
@@ -11,6 +11,7 @@
   </div>
 <% end %>
 
+
 <%= form_with(model: @user, local: true) do |f| %>
   <table>
     <tr>
@@ -20,6 +21,14 @@
       <td><%= f.label :email %></td>
       <td><%= f.email_field :email %></td>
     </tr>
+
+    <%= image_tag(@user.profile_photo.url) if @user.profile_photo && @user.profile_photo.url %><br>
+    <tr>
+      <td><%= f.label :profile_photo %></td>
+      <td><%= f.file_field :profile_photo %></td>
+    </tr>
+    <%= f.hidden_field :profile_photo_cache %>
+
     <tr>
       <td><%= f.label :password %></td>
       <td><%= f.password_field :password %></td>
@@ -29,7 +38,7 @@
       <td><%= f.password_field :password_confirmation %></td>
     </tr>
     <tr>
-      <td><%= f.submit "Create my account" %></td>
+      <td><%= f.submit "Update my account" %></td>
     </tr>
   </table>
 <% end %>

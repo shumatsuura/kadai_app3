@@ -14,6 +14,16 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    if logged_in?
+      if not current_user.id == @user.id
+        redirect_to feeds_path, notice:"アクセス権限がありません。"
+      end
+    else
+      redirect_to feeds_path, notice:"ログインしてください。"
+    end
+
+
+
   end
 
   def update
@@ -32,6 +42,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email,:profile_photo,:image_cache, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email,:profile_photo,:profile_photo_cache, :password, :password_confirmation)
   end
+
 end
