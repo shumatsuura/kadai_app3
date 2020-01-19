@@ -22,13 +22,6 @@ ActiveRecord::Schema.define(version: 2020_01_19_120742) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "feeds", force: :cascade do |t|
-    t.text "image"
-    t.text "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "pictures", force: :cascade do |t|
     t.text "image"
     t.text "content"
