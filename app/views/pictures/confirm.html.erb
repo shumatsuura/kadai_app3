@@ -1,0 +1,17 @@
+<h1>確認画面</h1>
+    <table>
+      <%= form_with(model: @picture, url: pictures_path, local: true) do |form| %>
+        <%= form.hidden_field :image_cache %>
+        <%= form.hidden_field :content %>
+        <tr>
+          <td><%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %></td>
+        </tr>
+        <tr>
+          <td><%= @picture.content %></td>
+        </tr>
+        <tr>
+          <td><%= form.submit "投稿する" %></td>
+          <td><%= form.submit "戻る", name: "back" %></td>
+        </tr>
+      <% end %>
+    </table>

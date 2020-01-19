@@ -16,10 +16,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if logged_in?
       if not current_user.id == @user.id
-        redirect_to feeds_path, notice:"アクセス権限がありません。"
+        redirect_to pictures_path, notice:"アクセス権限がありません。"
       end
     else
-      redirect_to feeds_path, notice:"ログインしてください。"
+      redirect_to pictures_path, notice:"ログインしてください。"
     end
   end
 
@@ -38,7 +38,7 @@ class UsersController < ApplicationController
 
   def favorites
     @user = User.find(params[:id])
-    @feeds = @user.favorite_feeds
+    @pictures = @user.favorite_pictures
   end
 
 

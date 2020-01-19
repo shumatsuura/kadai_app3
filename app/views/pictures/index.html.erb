@@ -1,0 +1,30 @@
+<% if logged_in? %>
+  <div class="new_picture">
+    <%= link_to '投稿を作成する',new_picture_path %>
+  </div>
+<% end %>
+
+<h1>投稿一覧</h1>
+
+<% @pictures.each do |picture| %>
+  <div class="posted_pictures">
+    <table>
+      <tr>
+        <td><%= link_to "#{picture.user.name}", user_path(picture.user_id) %></td>
+      </tr>
+      <tr>
+        <td><%= image_tag picture.image.url %></td>
+      </tr>
+      <tr>
+        <td><%= picture.content %></td>
+      </tr>
+    </table>
+    <%= link_to "詳細", picture_path(picture.id) %>
+    <% if logged_in? %>
+      <% if current_user.id == picture.user_id %>
+        <%= link_to "編集", edit_picture_path(picture.id) %>
+        <%= link_to "削除", picture_path(picture.id), method: :delete ,data: {confirm: '本当に削除していいですか？'}%>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

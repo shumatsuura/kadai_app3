@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   before_validation { email.downcase! }
   has_many :favorites, dependent: :destroy
-  has_many :favorite_feeds, through: :favorites, source: :feed
-  has_many :feeds, dependent: :destroy
+  has_many :favorite_pictures, through: :favorites, source: :picture
+  has_many :pictures, dependent: :destroy
 
   has_secure_password
 
