@@ -52,7 +52,7 @@ class FeedsController < ApplicationController
   end
 
   def show
-
+    @favorite = current_user.favorites.find_by(feed_id: @feed.id)
   end
 
   def destroy

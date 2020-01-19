@@ -5,6 +5,7 @@
   <%= image_tag(@user.profile_photo.url) if @user.profile_photo && @user.profile_photo.url %>
 </p>
 <br>
+<p><%= link_to "お気に入り投稿一覧", favorites_user_path(@user.id) %></p>
 
 <% if logged_in? && current_user.id == @user.id %>
   <p> <%= link_to "編集する", edit_user_path(@user.id) %></p>
