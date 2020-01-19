@@ -53,7 +53,9 @@ class FeedsController < ApplicationController
   end
 
   def show
-    @favorite = current_user.favorites.find_by(feed_id: @feed.id)
+    if logged_in?
+      @favorite = current_user.favorites.find_by(feed_id: @feed.id)
+    end
   end
 
   def destroy
@@ -64,7 +66,6 @@ class FeedsController < ApplicationController
       redirect_to feeds_path, notice:"削除しました"
     end
   end
-
 
   private
 

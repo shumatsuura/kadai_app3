@@ -1,7 +1,7 @@
 <h1>Profile Edit</h1>
 
 <% if @user.errors.any? %>
-  <div id="error_explanation">
+  <div id="error_explanation" class="center">
     <h2><%= pluralize(@user.errors.count, "error") %> prohibited this @user from being saved:</h2>
     <ul>
     <% @user.errors.full_messages.each do |message| %>
@@ -21,8 +21,8 @@
       <td><%= f.label :email %></td>
       <td><%= f.email_field :email %></td>
     </tr>
-
-    <%= image_tag(@user.profile_photo.url) if @user.profile_photo && @user.profile_photo.url %><br>
+      <td>現在のプロフィール画像 </td>
+      <td><%= image_tag(@user.profile_photo.url) if @user.profile_photo && @user.profile_photo.url %></td>
     <tr>
       <td><%= f.label :profile_photo %></td>
       <td><%= f.file_field :profile_photo %></td>

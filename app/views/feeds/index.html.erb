@@ -10,13 +10,13 @@
   <div class="posted_feeds">
     <table>
       <tr>
-        <td>ユーザー名：<%= link_to "#{feed.user.name}", user_path(feed.user_id) %></td>
-      </tr>
-      <tr>
-        <td>コメント：<%= feed.content %></td>
+        <td><%= link_to "#{feed.user.name}", user_path(feed.user_id) %></td>
       </tr>
       <tr>
         <td><%= image_tag feed.image.url %></td>
+      </tr>
+      <tr>
+        <td><%= feed.content %></td>
       </tr>
     </table>
     <%= link_to "詳細", feed_path(feed.id) %>
@@ -26,7 +26,5 @@
         <%= link_to "削除", feed_path(feed.id), method: :delete ,data: {confirm: '本当に削除していいですか？'}%>
       <% end %>
     <% end %>
-    <div class="">　</div>
-    <div class="">　</div>
   </div>
 <% end %>
