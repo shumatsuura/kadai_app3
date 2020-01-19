@@ -20,6 +20,7 @@ class FeedsController < ApplicationController
       render 'new'
     else
       if @feed.save
+        NotificationMailer.notification_mail(@feed).deliver
         redirect_to feeds_path, notice:"投稿しました。"
       else
         render 'new'
